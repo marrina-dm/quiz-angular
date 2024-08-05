@@ -1,0 +1,18 @@
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="/assets/img/logo.png" alt="Логотип">
+      </a>
+    </div>
+    <div class="profile" id="profile" *ngIf="userInfo && userInfo.fullName">
+      <img src="/assets/img/profile.png" alt="Профиль" class="profile-image">
+      <div class="profile-info">
+        <p class="profile-user" id="profile-full-name">{{ userInfo.fullName }}</p>
+        <a (click)="logout()" class="profile-logout">
+          Выйти
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

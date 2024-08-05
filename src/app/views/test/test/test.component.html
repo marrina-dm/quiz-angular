@@ -1,0 +1,39 @@
+<main class="test" *ngIf="quiz">
+  <div class="container">
+    <p class="pre-title" id="preTitle">{{ quiz.name }}</p>
+    <div class="test-progress-bar" id="progressBar">
+      <div class="test-progress-bar-item" *ngFor="let item of quiz.questions; let i = index;" [class.active]="currentQuestionIndex === (i + 1)" [class.complete]="currentQuestionIndex > (i + 1)">
+        <div class="test-progress-bar-item-circle"></div>
+        <div class="test-progress-bar-item-text">Вопрос {{ i + 1 }}</div>
+      </div>
+    </div>
+    <div class="test-question">
+      <p class="test-question-title" id="title">
+        <span>Вопрос {{ currentQuestionIndex }}:</span> {{ activeQuestion.question }}</p>
+      <div class="test-question-options" id="options">
+        <div class="test-question-option" *ngFor="let answer of activeQuestion.answers">
+          <input class="option-answer" id="answer-{{answer.id}}" type="radio" name="answer" [(ngModel)]="chosenAnswerId" [value]="answer.id">
+          <label for="answer-{{answer.id}}">{{ answer.answer }}</label>
+        </div>
+      </div>
+    </div>
+    <div class="test-actions">
+      <div class="test-previous-action">
+        <button class="btn btn-transparent" id="prev" [disabled]="currentQuestionIndex === 1" (click)="move(actionTestType.prev)">Назад</button>
+      </div>
+      <div class="test-time">
+        <p class="test-time-text">Осталось времени:</p>
+        <div class="test-time-clock" id="timer">{{ timerSeconds }}</div>
+      </div>
+      <div class="test-next-action">
+        <button class="btn btn-transparent" id="next" [disabled]="!chosenAnswerId" (click)="move(actionTestType.next)">{{currentQuestionIndex === quiz.questions.length ? 'Завершить' : 'Далее'}}</button>
+      </div>
+    </div>
+    <div class="test-pass-question">
+      <button id="pass" (click)="move(actionTestType.pass)">Пропустить вопрос
+        <img src="/assets/img/small-arrow.png" alt="Маленькая стрелка" class="active-arrow">
+        <img src="/assets/img/small-arrow-light.png" alt="Маленькая стрелка" class="non-active-arrow">
+      </button>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,44 @@
+.header {
+  padding: 40px 0;
+  border-bottom: 1px solid rgb(220, 220, 243);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      width: 220px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+
+      .profile-image {
+        margin-right: 5px;
+        width: 33px;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .profile-user {
+        font-size: 18px;
+        line-height: 18px;
+      }
+
+      .profile-logout {
+        font-size: 12px;
+        line-height: 12px;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}
